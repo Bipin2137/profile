@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Bipin Gawand – Senior Software Engineer</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#fdf4ff;--white:#fff;--text:#1a1a2e;--muted:#7c6f8a;
+  --accent:#7e22ce;--accent2:#9333ea;--accent3:#f3e8ff;--accent4:#e9d5ff;
+  --border:#e9d5ff;--card:#fff;--green:#059669;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;font-size:15px}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(253,244,255,0.96);border-bottom:1.5px solid var(--border);padding:0 2rem}
+.nav-inner{max-width:1040px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:54px}
+.nav-logo{font-weight:800;font-size:17px;color:var(--accent2);letter-spacing:-.5px}
+.nav-links{display:flex;gap:0;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;padding:6px 14px;border-radius:8px;transition:all .2s;cursor:pointer !important;display:block}
+.nav-links a:hover{color:var(--accent2);background:var(--accent3)}
+.nav-links a.active{color:var(--accent2);background:var(--accent3);font-weight:700}
+
+/* HERO */
+.hero-wrap{background:linear-gradient(135deg,#7e22ce 0%,#9333ea 45%,#a855f7 75%,#d8b4fe 100%);padding:4rem 0 0;position:relative;overflow:hidden;width:100%}
+.hero-wrap::before{content:'';position:absolute;inset:0;opacity:.07;background:radial-gradient(circle at 20% 50%,#fff 0%,transparent 50%),radial-gradient(circle at 80% 20%,#fff 0%,transparent 40%)}
+.hero{max-width:1040px;margin:0 auto;padding:0 2rem;display:flex;gap:2.5rem;align-items:center;position:relative;z-index:1}
+.hero-photo-wrap{flex-shrink:0;position:relative}
+.hero-photo{width:160px;height:160px;border-radius:20px;border:4px solid rgba(255,255,255,.4);overflow:hidden;object-fit:cover;display:block;background:linear-gradient(135deg,#7e22ce,#d8b4fe);display:flex;align-items:center;justify-content:center;font-size:3rem;font-weight:800;color:#fff}
+.hero-badge{position:absolute;bottom:-10px;right:-10px;background:#10b981;color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;border:2px solid var(--bg);white-space:nowrap}
+.hero-text{padding-bottom:2rem;flex:1}
+.hero-eyebrow{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:.5rem}
+.hero-text h1{font-size:2.8rem;font-weight:800;color:#fff;line-height:1.1;margin-bottom:.5rem;letter-spacing:-1px}
+.hero-text .tagline{font-size:1rem;color:rgba(255,255,255,.85);margin-bottom:1.2rem}
+.hero-chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.4rem}
+.chip{background:rgba(255,255,255,.18);color:#fff;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;border:1px solid rgba(255,255,255,.3)}
+.hero-btns{display:flex;gap:.7rem;flex-wrap:wrap}
+.btn-white{background:#fff;color:var(--accent2);padding:10px 22px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:700;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+.btn-white:hover{background:var(--accent3)}
+.btn-outline{background:transparent;color:#fff;padding:10px 22px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:700;border:2px solid rgba(255,255,255,.5);transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+.btn-outline:hover{background:rgba(255,255,255,.15)}
+.wave{display:block;width:100%;overflow:hidden;line-height:0;margin-top:-2px}
+
+/* SECTIONS */
+section{max-width:1040px;margin:0 auto;padding:2.5rem 2rem}
+.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:1.6rem}
+.sec-label{background:var(--accent2);color:#fff;font-size:11px;font-weight:800;padding:4px 12px;border-radius:6px;text-transform:uppercase;letter-spacing:.8px}
+.sec-line{flex:1;height:1.5px;background:var(--border)}
+.divider{height:1.5px;background:var(--border);max-width:1040px;margin:0 auto}
+
+/* FADE IN ANIMATION */
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* ABOUT */
+.about-card{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:1.8rem;font-size:15px;color:#374151;line-height:1.9;border-left:4px solid var(--accent2)}
+.about-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-top:1.4rem}
+.stat-box{background:var(--accent3);border-radius:12px;padding:1rem;text-align:center}
+.stat-num{font-size:2rem;font-weight:800;color:var(--accent2);display:block;line-height:1}
+.stat-lbl{font-size:12px;color:#6b21a8;font-weight:600;margin-top:4px;display:block}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:2.2rem}
+.timeline::before{content:'';position:absolute;left:8px;top:12px;bottom:12px;width:2px;background:linear-gradient(to bottom,#7e22ce,#a855f7,#ddd6fe)}
+.t-item{position:relative;margin-bottom:1.3rem}
+.t-dot{position:absolute;left:-2.2rem;top:20px;width:18px;height:18px;border-radius:50%;background:var(--accent2);border:3px solid var(--bg);z-index:1;transition:transform .2s}
+.t-dot.current{background:#10b981;box-shadow:0 0 0 5px rgba(16,185,129,.15)}
+.t-item:hover .t-dot{transform:scale(1.25)}
+.t-card{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:1.3rem 1.5rem;transition:border-color .2s,transform .2s}
+.t-card:hover{border-color:var(--accent2);transform:translateX(4px)}
+.t-role{font-size:16px;font-weight:700;color:var(--text)}
+.t-company{font-size:14px;color:var(--accent2);font-weight:600;margin:.15rem 0}
+.t-meta{font-size:12px;color:var(--muted);margin-bottom:.8rem;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.badge-now{background:#d1fae5;color:#065f46;border:1px solid #a7f3d0;padding:2px 9px;border-radius:12px;font-size:11px;font-weight:700}
+.t-bullets{list-style:none;padding:0}
+.t-bullets li{font-size:13.5px;color:#4b5563;padding:.25rem 0 .25rem 1.1rem;position:relative;border-bottom:1px dashed var(--accent4)}
+.t-bullets li:last-child{border-bottom:none}
+.t-bullets li::before{content:'▸';position:absolute;left:0;color:var(--accent2);font-size:11px;top:.3rem}
+
+/* SKILLS */
+.skills-wrap{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.8rem}
+.sk{background:var(--card);border:1.5px solid var(--border);border-radius:12px;padding:.8rem 1rem;transition:all .2s}
+.sk:hover{border-color:var(--accent2);transform:translateY(-2px)}
+.sk-top{display:flex;align-items:center;gap:9px;margin-bottom:.5rem}
+.sk-icon{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.sk-name{font-size:13.5px;font-weight:700;color:var(--text)}
+.sk-bar-bg{height:5px;background:var(--accent4);border-radius:10px;overflow:hidden}
+.sk-bar{height:100%;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width 1.2s ease}
+
+/* PROJECTS */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.1rem}
+.proj-card{background:var(--card);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;transition:all .2s;text-decoration:none;display:block}
+.proj-card:hover{border-color:var(--accent2);transform:translateY(-4px)}
+.proj-header{padding:1.2rem 1.4rem 0;display:flex;align-items:flex-start;gap:12px}
+.proj-icon{width:48px;height:48px;border-radius:12px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:22px}
+.proj-name{font-size:15px;font-weight:700;color:var(--text);margin-bottom:3px}
+.proj-category{font-size:11px;font-weight:700;padding:2px 9px;border-radius:10px}
+.proj-desc{font-size:13px;color:#4b5563;line-height:1.6;padding:.8rem 1.4rem}
+.proj-footer{padding:.7rem 1.4rem .9rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border)}
+.proj-rating{font-size:12px;color:var(--muted);font-weight:600}
+.proj-link{font-size:12px;color:var(--accent2);font-weight:700}
+
+/* LEARNING */
+.learn-card{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:1.5rem;border-left:4px solid #f59e0b}
+.learn-top{display:flex;align-items:center;gap:14px;margin-bottom:1rem}
+.learn-icon{width:46px;height:46px;border-radius:12px;background:#fef3c7;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.learn-title{font-size:16px;font-weight:700;color:var(--text)}
+.learn-sub{font-size:13px;color:var(--muted);margin-top:2px}
+.learn-bar-bg{height:10px;background:#fef3c7;border-radius:10px;overflow:hidden;margin-bottom:.5rem}
+.learn-bar{height:100%;border-radius:10px;background:linear-gradient(90deg,#f59e0b,#fbbf24);width:0;transition:width 1.4s ease}
+.learn-meta{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);font-weight:600}
+
+/* EDUCATION */
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+.edu-card{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:1.4rem;display:flex;gap:14px;align-items:flex-start;transition:border-color .2s}
+.edu-card:hover{border-color:var(--accent2)}
+.edu-icon{width:42px;height:42px;border-radius:10px;background:var(--accent3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px}
+.edu-degree{font-size:15px;font-weight:700;color:var(--text);margin-bottom:.25rem}
+.edu-school{font-size:16px;color:var(--accent2);font-weight:800;margin-bottom:.2rem}
+.edu-college{font-size:12px;color:var(--muted);margin-bottom:.2rem}
+.edu-year{font-size:12px;color:var(--muted)}
+
+/* CERTS */
+.cert-list{display:flex;flex-direction:column;gap:.8rem}
+.cert-card{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:1.1rem 1.4rem;display:flex;align-items:center;gap:14px;transition:all .2s}
+.cert-card:hover{border-color:var(--accent2);background:var(--accent3)}
+.cert-icon{width:42px;height:42px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:20px}
+.cert-info{flex:1}
+.cert-name{font-size:14px;font-weight:700;color:var(--text)}
+.cert-sub{font-size:12px;color:var(--muted);margin-top:2px}
+.cert-verify{font-size:12px;color:var(--accent2);font-weight:700;margin-left:auto;white-space:nowrap;text-decoration:none}
+.cert-verify:hover{text-decoration:underline}
+
+
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem}
+.cc{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:1rem 1.3rem;display:flex;align-items:center;gap:12px;text-decoration:none;transition:all .2s}
+.cc:hover{border-color:var(--accent2);background:var(--accent3)}
+.cc-icon{width:38px;height:38px;border-radius:10px;background:var(--accent3);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cc-icon svg{width:18px;height:18px;stroke:var(--accent2);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cc-lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;font-weight:600}
+.cc-val{font-size:13px;color:var(--text);font-weight:600;word-break:break-all}
+
+footer{text-align:center;padding:2rem;border-top:1.5px solid var(--border);color:var(--muted);font-size:13px;margin-top:1rem}
+
+/* PERSONAL INFO SECTION */
+.personal-info{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:1rem}
+/* INTERESTS BLOCKS */
+.interests-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;margin:1rem 0}
+.interest-block{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:1.4rem;transition:all .3s;text-decoration:none;color:var(--text);position:relative;overflow:hidden}
+.interest-block:hover{border-color:var(--accent2);transform:translateY(-4px);box-shadow:0 12px 30px rgba(126,34,206,.12)}
+.interest-block::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),var(--accent2));transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+.interest-block:hover::before{transform:scaleX(1)}
+.interest-header{display:flex;align-items:center;gap:12px;margin-bottom:1rem}
+.interest-icon-block{width:48px;height:48px;border-radius:12px;background:var(--accent3);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;transition:all .3s}
+.interest-block:hover .interest-icon-block{background:var(--accent2);color:#fff;transform:scale(1.1)}
+.interest-info{flex:1}
+.interest-name{font-size:15px;font-weight:700;color:var(--text);margin-bottom:2px}
+.interest-desc{font-size:12px;color:var(--muted);font-weight:500}
+.interest-meta{font-size:11px;color:var(--accent2);font-weight:600;display:flex;align-items:center;gap:4px}
+.interest-meta svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2}
+
+/* CAREER GOALS */
+.goals-card{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:1.8rem;font-size:15px;color:#374151;line-height:1.9;border-left:4px solid #10b981}
+.goals-highlight{color:var(--accent2);font-weight:700}
+.goals-list{margin-top:1rem;list-style:none;padding:0}
+.goals-list li{padding:.4rem 0 .4rem 1.5rem;position:relative;color:#4b5563}
+.goals-list li::before{content:'🎯';position:absolute;left:0;top:.4rem}
+
+/* TESTIMONIALS */
+.testimonials-grid{display:flex;flex-direction:column;gap:1.2rem}
+.testimonial{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:1.5rem;position:relative;transition:all .2s}
+.testimonial:hover{border-color:var(--accent2);transform:translateY(-2px)}
+.testimonial::before{content:'"';position:absolute;top:-10px;left:20px;font-size:3rem;color:var(--accent2);font-weight:800}
+.testimonial-text{font-size:15px;color:#374151;line-height:1.7;margin-bottom:1rem;font-style:italic}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.testimonial-avatar{width:48px;height:48px;border-radius:12px;background:var(--accent3);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:var(--accent2)}
+.testimonial-info{}
+.testimonial-name{font-size:14px;font-weight:700;color:var(--text)}
+.testimonial-role{font-size:12px;color:var(--muted);margin-top:1px}
+
+/* PROFESSIONAL TIMELINE */
+.pro-timeline{position:relative;padding:2rem 0}
+.pro-timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--accent2),var(--accent),#ddd6fe);transform:translateX(-50%)}
+.timeline-item{position:relative;margin-bottom:2rem;display:flex;align-items:center}
+.timeline-item:nth-child(odd){flex-direction:row}
+.timeline-item:nth-child(even){flex-direction:row-reverse}
+.timeline-content{flex:1;max-width:calc(50% - 2rem);padding:1.5rem;background:var(--card);border:1.5px solid var(--border);border-radius:16px;position:relative}
+.timeline-item:nth-child(odd) .timeline-content{margin-right:2rem}
+.timeline-item:nth-child(even) .timeline-content{margin-left:2rem}
+.timeline-dot{position:absolute;left:50%;top:50%;width:16px;height:16px;background:var(--accent2);border:4px solid var(--bg);border-radius:50%;transform:translate(-50%,-50%);z-index:2}
+.timeline-year{font-size:12px;font-weight:800;color:var(--accent2);text-transform:uppercase;letter-spacing:1px;margin-bottom:.5rem}
+.timeline-title{font-size:16px;font-weight:700;color:var(--text);margin-bottom:.3rem}
+.timeline-desc{font-size:13px;color:var(--muted);line-height:1.6}
+
+@media(max-width:640px){
+  .hero{flex-direction:column;align-items:center;text-align:center;padding-bottom:1.5rem}
+  .hero-chips{justify-content:center}
+  .hero-btns{justify-content:center}
+  .hero-text h1{font-size:2rem}
+  .nav-links{display:none}
+  section{padding:2rem 1.2rem}
+  .timeline{padding-left:1.5rem}
+  
+  /* Mobile responsive for new sections */
+  .interests-grid{grid-template-columns:1fr;gap:1rem}
+  .pro-timeline::before{left:1.5rem;transform:none}
+  .timeline-item{flex-direction:column !important}
+  .timeline-content{max-width:100%;margin:0 !important;margin-left:2rem !important}
+  .timeline-dot{left:1.5rem;transform:translateY(-50%)}
+  .testimonials-grid{gap:.8rem}
+  .testimonial{padding:1.2rem}
+  .testimonial::before{font-size:2rem;top:-5px;left:15px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">BG.</span>
+    <ul class="nav-links">
+      <li><a id="nav-about"     onclick="navTo('about')">About</a></li>
+      <li><a id="nav-experience" onclick="navTo('experience')">Experience</a></li>
+      <li><a id="nav-projects"  onclick="navTo('projects')">Projects</a></li>
+      <li><a id="nav-skills"    onclick="navTo('skills')">Skills</a></li>
+      <li><a id="nav-certifications" onclick="navTo('certifications')">Certs</a></li>
+      <li><a id="nav-contact"   onclick="navTo('contact')">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="hero-wrap">
+  <div class="hero">
+    <div class="hero-photo-wrap">
+      <img class="hero-photo" src="https://raw.githubusercontent.com/Bipin2137/profile/main/profile_photo.jpeg" alt="Bipin Gawand" onerror="this.outerHTML='<div class=\'hero-photo\'>BG</div>'"/>
+      <span class="hero-badge">&#x2714; Available</span>
+    </div>
+    <div class="hero-text">
+      <div class="hero-eyebrow">Senior Software Engineer</div>
+      <h1>Bipin Gawand</h1>
+      <p class="tagline">Android SDK Specialist &middot; 10 Years of Building at Scale</p>
+      <div class="hero-chips">
+        <span class="chip">Android SDK</span><span class="chip">Kotlin</span><span class="chip">Java</span>
+        <span class="chip">Golang</span><span class="chip">Spring Boot</span><span class="chip">Firebase</span><span class="chip">Ad Tech</span>
+      </div>
+      <div class="hero-btns">
+        <a href="mailto:bipin.gawand@gmail.com" class="btn-white">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Hire Me
+        </a>
+        <a href="Bipin_Gawand_10years_Resume.pdf" class="btn-outline" download="Bipin_Gawand_Resume.pdf" target="_blank">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Resume
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="wave">
+    <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block;width:100%;height:80px">
+      <path d="M-1,0 C360,50 1080,50 1441,0 L1441,81 L-1,81 Z" fill="#fdf4ff"/>
+    </svg>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-head"><span class="sec-label">About</span><div class="sec-line"></div></div>
+  <div class="about-card fade-in">
+    Seasoned Android Developer with over <strong style="color:var(--accent2)">10 years of expertise</strong> crafting innovative and efficient mobile applications for diverse industries. Currently at <strong style="color:var(--accent2)">Reliance Jio</strong>, building and scaling the Jio-Ads SDK — powering Audio, Video and Image ad delivery across millions of users. Passionate about robust SDK architecture, observability, and making developer integrations smooth and reliable.
+    <div class="about-stats">
+      <div class="stat-box"><span class="stat-num">10+</span><span class="stat-lbl">Years experience</span></div>
+      <div class="stat-box"><span class="stat-num">5</span><span class="stat-lbl">Companies</span></div>
+      <div class="stat-box"><span class="stat-num">20K+</span><span class="stat-lbl">App users reached</span></div>
+      <div class="stat-box"><span class="stat-num">3</span><span class="stat-lbl">Certifications</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="sec-head"><span class="sec-label">Experience</span><div class="sec-line"></div></div>
+  <div class="timeline">
+    <div class="t-item fade-in">
+      <div class="t-dot current"></div>
+      <div class="t-card">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.4rem;margin-bottom:.3rem">
+          <div class="t-role">Senior Application Developer</div><span class="badge-now">Current</span>
+        </div>
+        <div class="t-company">Reliance Jio Infocomm Limited</div>
+        <div class="t-meta"><span>Jul 2020 – Present · 5 yrs 10 mos</span><span>Navi Mumbai</span></div>
+        <ul class="t-bullets">
+          <li>Developed & maintained Jio-Ads SDK for Audio, Video and Image ad rendering across partner apps.</li>
+          <li>Built an in-house Push Notification system equivalent to Firebase Cloud Messaging.</li>
+          <li>Improved SDK reliability end-to-end: ad rendering, event tracking, reducing Play Store integration blockers.</li>
+          <li>Added runtime error logging, event instrumentation & debugging hooks for faster failure detection.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="t-item fade-in">
+      <div class="t-dot"></div>
+      <div class="t-card">
+        <div class="t-role">Android Developer</div>
+        <div class="t-company">Carnot Technologies</div>
+        <div class="t-meta"><span>Sep 2019 – Mar 2020 · 7 mos</span><span>Andheri, Mumbai</span></div>
+        <ul class="t-bullets">
+          <li>Built and maintained Android apps in Java & Kotlin with REST API integration.</li>
+          <li>Implemented offline-first flows using Room/SQLite for low-network reliability.</li>
+          <li>Optimized background tasks, fixed crashes/ANRs and improved diagnostic logging.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="t-item fade-in">
+      <div class="t-dot"></div>
+      <div class="t-card">
+        <div class="t-role">Android Developer</div>
+        <div class="t-company">LEAD Group</div>
+        <div class="t-meta"><span>Oct 2018 – Aug 2019 · 11 mos</span><span>Andheri, Mumbai</span></div>
+        <ul class="t-bullets">
+          <li>Developed & published Teacher, Parent and Student apps on Google Play Store.</li>
+          <li>Implemented authentication, push notifications and role-based flows across all user types.</li>
+          <li>Collaborated with product and QA for timely, production-ready releases.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="t-item fade-in">
+      <div class="t-dot"></div>
+      <div class="t-card">
+        <div class="t-role">Android Developer</div>
+        <div class="t-company">SpakingLAMP Pvt. Ltd.</div>
+        <div class="t-meta"><span>Jun 2017 – Sep 2018 · 1 yr 4 mos</span><span>Mumbai</span></div>
+        <ul class="t-bullets">
+          <li>Converted UI/UX designs to responsive Android screens and reusable components.</li>
+          <li>Contributed to product growth reaching 20,000+ users through improved user journeys.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="t-item fade-in">
+      <div class="t-dot"></div>
+      <div class="t-card">
+        <div class="t-role">Engineer Intern</div>
+        <div class="t-company">CMS Info Systems</div>
+        <div class="t-meta"><span>Sep 2015 – Jun 2017 · 1 yr 10 mos</span></div>
+        <ul class="t-bullets">
+          <li>Collaborated with senior engineers on complex projects and attended development workshops.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="sec-head"><span class="sec-label">Projects</span><div class="sec-line"></div></div>
+  <div class="proj-grid">
+    <a class="proj-card fade-in" href="https://play.google.com/store/apps/details?id=com.carnot.traclytics.simha&hl=en_IN" target="_blank">
+      <div class="proj-header">
+        <div class="proj-icon" style="background:#e0f2fe">🚜</div>
+        <div>
+          <div class="proj-name">Simha Kit</div>
+          <span class="proj-category" style="background:#e0f2fe;color:#0369a1">Auto & Vehicles</span>
+        </div>
+      </div>
+      <div class="proj-desc">Smart Tractor GPS & Farm Management app for Indian farmers. Features IoT-based tractor tracking, fuel monitoring, billing, and a digital ledger (Udhar Bahi Khata).</div>
+      <div class="proj-footer">
+        <span class="proj-rating">⭐ 4.2 · 821 reviews</span>
+        <span class="proj-link">View on Play Store ↗</span>
+      </div>
+    </a>
+    <a class="proj-card fade-in" href="https://play.google.com/store/apps/details?id=com.antariksha.donation&hl=en_IN" target="_blank">
+      <div class="proj-header">
+        <div class="proj-icon" style="background:#d1fae5">🙏</div>
+        <div>
+          <div class="proj-name">JNMS Donation</div>
+          <span class="proj-category" style="background:#d1fae5;color:#065f46">Finance</span>
+        </div>
+      </div>
+      <div class="proj-desc">Digital donation platform for Shree Sampraday devotees. Enables authorized members to collect and manage donations via cash or cheque with full accountability.</div>
+      <div class="proj-footer">
+        <span class="proj-rating">⭐ 4.6 · 1.9K reviews · 10K+ downloads</span>
+        <span class="proj-link">View on Play Store ↗</span>
+      </div>
+    </a>
+    <a class="proj-card fade-in" href="https://play.google.com/store/apps/details?id=com.leadschool.schoolowner" target="_blank">
+      <div class="proj-header">
+        <div class="proj-icon" style="background:#ede9fe">🏫</div>
+        <div>
+          <div class="proj-name">LEAD School Owner</div>
+          <span class="proj-category" style="background:#ede9fe;color:#6b21a8">Education</span>
+        </div>
+      </div>
+      <div class="proj-desc">School owner dashboard app for LEAD partner schools. Enables tracking key metrics, student/parent/teacher reports, announcements, and direct contact with LEAD School support.</div>
+      <div class="proj-footer">
+        <span class="proj-rating">⭐ 4.2 · 225 reviews · 50K+ downloads</span>
+        <span class="proj-link">View on Play Store ↗</span>
+      </div>
+    </a>
+    <a class="proj-card fade-in" href="https://play.google.com/store/apps/details?id=com.antariksha.dmsvarganidar&hl=en_IN" target="_blank">
+      <div class="proj-header">
+        <div class="proj-icon" style="background:#fef3c7">📖</div>
+        <div>
+          <div class="proj-name">Dharmakshetra Magazine</div>
+          <span class="proj-category" style="background:#fef3c7;color:#92400e">News & Magazines</span>
+        </div>
+      </div>
+      <div class="proj-desc">Digital magazine app for Jagadguru Narendracharyaji Maharaj's teachings. Supports online/offline subscriptions with audio and reading features for devotees.</div>
+      <div class="proj-footer">
+        <span class="proj-rating">⭐ 4.5 · 5.2K reviews · 1L+ downloads</span>
+        <span class="proj-link">View on Play Store ↗</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sec-head"><span class="sec-label">Skills</span><div class="sec-line"></div></div>
+  <div class="skills-wrap">
+    <div class="sk fade-in"><div class="sk-top"><div class="sk-icon" style="background:#ede9fe">📱</div><span class="sk-name">Android SDK</span></div><div class="sk-bar-bg"><div class="sk-bar" data-w="95"></div></div></div>
+    <div class="sk fade-in"><div class="sk-top"><div class="sk-icon" style="background:#e0f2fe">🎯</div><span class="sk-name">Kotlin</span></div><div class="sk-bar-bg"><div class="sk-bar" data-w="90"></div></div></div>
+    <div class="sk fade-in"><div class="sk-top"><div class="sk-icon" style="background:#fef3c7">☕</div><span class="sk-name">Java</span></div><div class="sk-bar-bg"><div class="sk-bar" data-w="90"></div></div></div>
+    <div class="sk fade-in"><div class="sk-top"><div class="sk-icon" style="background:#d1fae5">🌿</div><span class="sk-name">Spring Boot</span></div><div class="sk-bar-bg"><div class="sk-bar" data-w="70"></div></div></div>
+    <div class="sk fade-in"><div class="sk-top"><div class="sk-icon" style="background:#cffafe">🐹</div><span class="sk-name">Golang</span></div><div class="sk-bar-bg"><div class="sk-bar" data-w="65"></div></div></div>
+    <div class="sk fade-in"><div class="sk-top"><div class="sk-icon" style="background:#ffedd5">🔥</div><span class="sk-name">Firebase</span></div><div class="sk-bar-bg"><div class="sk-bar" data-w="85"></div></div></div>
+    <div class="sk fade-in"><div class="sk-top"><div class="sk-icon" style="background:#f3e8ff">🛠️</div><span class="sk-name">SDK Development</span></div><div class="sk-bar-bg"><div class="sk-bar" data-w="92"></div></div></div>
+    <div class="sk fade-in"><div class="sk-top"><div class="sk-icon" style="background:#fce7f3">🔗</div><span class="sk-name">REST APIs</span></div><div class="sk-bar-bg"><div class="sk-bar" data-w="88"></div></div></div>
+    <div class="sk fade-in"><div class="sk-top"><div class="sk-icon" style="background:#dbeafe">🗄️</div><span class="sk-name">Room / SQLite</span></div><div class="sk-bar-bg"><div class="sk-bar" data-w="80"></div></div></div>
+    <div class="sk fade-in"><div class="sk-top"><div class="sk-icon" style="background:#ccfbf1">🔔</div><span class="sk-name">Push Notifications</span></div><div class="sk-bar-bg"><div class="sk-bar" data-w="88"></div></div></div>
+    <div class="sk fade-in"><div class="sk-top"><div class="sk-icon" style="background:#ede9fe">📺</div><span class="sk-name">Ad Tech</span></div><div class="sk-bar-bg"><div class="sk-bar" data-w="85"></div></div></div>
+    <div class="sk fade-in"><div class="sk-top"><div class="sk-icon" style="background:#f1f5f9">🔍</div><span class="sk-name">Debugging & Observability</span></div><div class="sk-bar-bg"><div class="sk-bar" data-w="90"></div></div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CURRENTLY LEARNING -->
+<section id="learning">
+  <div class="sec-head"><span class="sec-label">Currently Learning</span><div class="sec-line"></div></div>
+  <div class="learn-card fade-in">
+    <div class="learn-top">
+      <div class="learn-icon">🤖</div>
+      <div>
+        <div class="learn-title">Machine Learning Algorithms</div>
+        <div class="learn-sub">Deepening expertise in supervised learning, regression & classification</div>
+      </div>
+    </div>
+    <div class="learn-bar-bg"><div class="learn-bar" data-w="40"></div></div>
+    <div class="learn-meta"><span>Progress</span><span>40%</span></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="sec-head"><span class="sec-label">Education</span><div class="sec-line"></div></div>
+  <div class="edu-grid">
+    <div class="edu-card fade-in">
+      <div class="edu-icon">🎓</div>
+      <div>
+        <div class="edu-degree">Bachelor of Engineering</div>
+        <div class="edu-school">University of Mumbai</div>
+        <div class="edu-college">Rajendra Mane College of Engineering & Technology</div>
+        <div class="edu-year">Computer Software Engineering · 2010 – 2013</div>
+      </div>
+    </div>
+    <div class="edu-card fade-in">
+      <div class="edu-icon">📜</div>
+      <div>
+        <div class="edu-degree">Diploma</div>
+        <div class="edu-school">Maharashtra State Board of Technical Education</div>
+        <div class="edu-college">Government Polytechnic Pen</div>
+        <div class="edu-year">Computer / IT Administration & Management · 2007 – 2010</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="sec-head"><span class="sec-label">Certifications</span><div class="sec-line"></div></div>
+  <div class="cert-list">
+    <div class="cert-card fade-in">
+      <div class="cert-icon" style="background:#d1fae5">🤖</div>
+      <div class="cert-info">
+        <div class="cert-name">Supervised Machine Learning: Regression &amp; Classification</div>
+        <div class="cert-sub">Coursera · DeepLearning.AI / Stanford</div>
+      </div>
+      <a class="cert-verify" href="https://www.coursera.org/account/accomplishments/verify/M9EFESHSA0XV" target="_blank">Verify ↗</a>
+    </div>
+    <div class="cert-card fade-in">
+      <div class="cert-icon" style="background:#fef3c7">🌐</div>
+      <div class="cert-info">
+        <div class="cert-name">IELTS Academic</div>
+        <div class="cert-sub">International English Language Testing System</div>
+      </div>
+    </div>
+    <div class="cert-card fade-in">
+      <div class="cert-icon" style="background:var(--accent3)">⚡</div>
+      <div class="cert-info">
+        <div class="cert-name">Vibe Coding with Cursor AI</div>
+        <div class="cert-sub">Coursera</div>
+      </div>
+      <a class="cert-verify" href="https://www.coursera.org/account/accomplishments/verify/WP15FIFA958R" target="_blank">Verify ↗</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- INTERESTS -->
+<section id="interests">
+  <div class="sec-head"><span class="sec-label">Interests</span><div class="sec-line"></div></div>
+  <div class="interests-grid">
+    <a class="interest-block fade-in" href="https://www.chess.com/member/bipingawand" target="_blank">
+      <div class="interest-header">
+        <div class="interest-icon-block">♟️</div>
+        <div class="interest-info">
+          <div class="interest-name">Playing Chess</div>
+          <div class="interest-desc">Strategic thinking & problem solving</div>
+        </div>
+      </div>
+      <div class="interest-meta">
+        <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>
+        View Chess.com Profile
+      </div>
+    </a>
+    <div class="interest-block fade-in">
+      <div class="interest-header">
+        <div class="interest-icon-block">🎬</div>
+        <div class="interest-info">
+          <div class="interest-name">Cinema Enthusiast</div>
+          <div class="interest-desc">Exploring stories & cinematography</div>
+        </div>
+      </div>
+      <div class="interest-meta">
+        🍿 Movie buff & critic
+      </div>
+    </div>
+    <a class="interest-block fade-in" href="https://medium.com/@bipin.gawand" target="_blank">
+      <div class="interest-header">
+        <div class="interest-icon-block">✍️</div>
+        <div class="interest-info">
+          <div class="interest-name">Technical Writing</div>
+          <div class="interest-desc">Sharing knowledge & insights</div>
+        </div>
+      </div>
+      <div class="interest-meta">
+        <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>
+        Read on Medium
+      </div>
+    </a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CAREER GOALS -->
+<section id="career-goals">
+  <div class="sec-head"><span class="sec-label">Career Goals</span><div class="sec-line"></div></div>
+  <div class="goals-card fade-in">
+    I'm actively pursuing opportunities to advance my career through <span class="goals-highlight">Masters in Artificial Intelligence</span> from top USA universities. With my decade of software development experience and growing expertise in AI algorithms, I'm excited to contribute to the next generation of intelligent systems and AI innovation.
+    <ul class="goals-list">
+      <li>Pursue MS in AI/ML from renowned US institutions (targeting Fall 2026)</li>
+      <li>Research focus: AI Algorithms and foundations of AI systems</li>
+      <li>Contribute to cutting-edge AI research while leveraging industry experience</li>
+      <li>Build next-generation intelligent systems and AI-powered solutions</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROFESSIONAL TIMELINE -->
+<section id="timeline">
+  <div class="sec-head"><span class="sec-label">Professional Journey</span><div class="sec-line"></div></div>
+  <div class="pro-timeline">
+    <div class="timeline-item fade-in">
+      <div class="timeline-content">
+        <div class="timeline-year">2020 - Present</div>
+        <div class="timeline-title">Senior Application Developer</div>
+        <div class="timeline-desc">Leading SDK development at Jio, building ad tech solutions for millions of users</div>
+      </div>
+      <div class="timeline-dot"></div>
+    </div>
+    <div class="timeline-item fade-in">
+      <div class="timeline-content">
+        <div class="timeline-year">2017 - 2020</div>
+        <div class="timeline-title">Android Developer</div>
+        <div class="timeline-desc">Mastered mobile app development across diverse industries and scaled user bases</div>
+      </div>
+      <div class="timeline-dot"></div>
+    </div>
+    <div class="timeline-item fade-in">
+      <div class="timeline-content">
+        <div class="timeline-year">2015 - 2017</div>
+        <div class="timeline-title">Engineer Intern</div>
+        <div class="timeline-desc">Foundation building and learning from senior engineers in complex projects</div>
+      </div>
+      <div class="timeline-dot"></div>
+    </div>
+    <div class="timeline-item fade-in">
+      <div class="timeline-content">
+        <div class="timeline-year">2013</div>
+        <div class="timeline-title">Engineering Graduate</div>
+        <div class="timeline-desc">Completed BE in Computer Software Engineering, ready to transform ideas into code</div>
+      </div>
+      <div class="timeline-dot"></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="sec-head"><span class="sec-label">Testimonials</span><div class="sec-line"></div></div>
+  <div class="testimonials-grid">
+    <div class="testimonial fade-in">
+      <div class="testimonial-text">
+        Bipin was one of the most dedicated and technically sound students in our Computer Engineering department. His passion for programming and problem-solving was evident from day one. He consistently delivered excellent projects and showed great potential for software development.
+      </div>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">LN</div>
+        <div class="testimonial-info">
+          <div class="testimonial-name">Prof. L Naik</div>
+          <div class="testimonial-role">HOD, Computer Department • RMCET</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial fade-in">
+      <div class="testimonial-text">
+        Bipin is an exceptional Android developer who consistently delivers high-quality SDK solutions. His deep understanding of mobile architecture and ability to optimize for scale has been instrumental in our ad tech platform's success. A reliable team player with strong technical leadership skills.
+      </div>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">AS</div>
+        <div class="testimonial-info">
+          <div class="testimonial-name">Abhinav Sehgal</div>
+          <div class="testimonial-role">General Manager • Reliance Jio</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial fade-in">
+      <div class="testimonial-text">
+        Having worked closely with Bipin for nearly a decade, I've witnessed his evolution from a promising developer to a seasoned Android expert. His technical acumen, combined with his collaborative approach as a developer working with business analysis, makes him invaluable to any team. Highly recommended!
+      </div>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">AH</div>
+        <div class="testimonial-info">
+          <div class="testimonial-name">Ankit Harode</div>
+          <div class="testimonial-role">Associate Director • UBS, Japan</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-head"><span class="sec-label">Contact</span><div class="sec-line"></div></div>
+  <div class="contact-grid">
+    <a class="cc fade-in" href="mailto:bipin.gawand@gmail.com">
+      <div class="cc-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+      <div><div class="cc-lbl">Email</div><div class="cc-val">bipin.gawand@gmail.com</div></div>
+    </a>
+    <a class="cc fade-in" href="tel:+919321766746">
+      <div class="cc-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.17a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+      <div><div class="cc-lbl">Phone</div><div class="cc-val">+91 93217 66746</div></div>
+    </a>
+    <a class="cc fade-in" href="https://www.linkedin.com/in/bipin-gawand-a7199a22/" target="_blank">
+      <div class="cc-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+      <div><div class="cc-lbl">LinkedIn</div><div class="cc-val">bipin-gawand-a7199a22</div></div>
+    </a>
+    <a class="cc fade-in" href="https://medium.com/@bipin.gawand" target="_blank">
+      <div class="cc-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
+      <div><div class="cc-lbl">Blog</div><div class="cc-val">medium.com/@bipin.gawand</div></div>
+    </a>
+    <div class="cc fade-in" style="cursor:default">
+      <div class="cc-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+      <div><div class="cc-lbl">Location</div><div class="cc-val">Mumbai, Maharashtra, India</div></div>
+    </div>
+  </div>
+</section>
+
+<footer><p>© 2026 Bipin Gawand &middot; Senior Software Engineer &middot; Mumbai, India</p></footer>
+
+<script>
+function navTo(id){
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
+
+
+// Navigation highlighting
+const sections = ['about','experience','projects','skills','certifications','contact'];
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      sections.forEach(s=>{
+        const el = document.getElementById('nav-'+s);
+        if(el) el.classList.toggle('active', s===e.target.id);
+      });
+    }
+  });
+},{threshold:0.3});
+sections.forEach(s=>{const el=document.getElementById(s);if(el)obs.observe(el)});
+
+// Fade-in animations
+const fadeObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      
+      // Skill bars animation
+      const bar = e.target.querySelector('.sk-bar');
+      if(bar) setTimeout(()=>{bar.style.width=bar.dataset.w+'%'},100);
+      
+      // Learning bar animation
+      const lbar = e.target.querySelector('.learn-bar');
+      if(lbar) setTimeout(()=>{lbar.style.width=lbar.dataset.w+'%'},100);
+      
+      // Animated counters for stats
+      const statNum = e.target.querySelector('.stat-num');
+      if(statNum && !statNum.classList.contains('animated')) {
+        statNum.classList.add('animated');
+        animateCounter(statNum);
+      }
+      
+      fadeObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.15});
+
+document.querySelectorAll('.fade-in').forEach(el=>fadeObs.observe(el));
+
+// Initialize skill bars
+document.querySelectorAll('.sk.fade-in').forEach(el=>{
+  const bar = el.querySelector('.sk-bar');
+  if(bar) bar.style.width='0%';
+});
+
+// Animated counter function
+function animateCounter(element) {
+  const text = element.textContent;
+  const isPlus = text.includes('+');
+  const number = parseInt(text.replace(/[^\d]/g, ''));
+  let current = 0;
+  const increment = number / 30;
+  const timer = setInterval(() => {
+    current += increment;
+    if (current >= number) {
+      current = number;
+      clearInterval(timer);
+    }
+    element.textContent = Math.floor(current) + (isPlus ? '+' : '');
+  }, 50);
+}
+
+// Add hover effects for interactive elements
+document.addEventListener('DOMContentLoaded', function() {
+  // Add ripple effect to cards
+  document.querySelectorAll('.proj-card, .cert-card, .hobby, .cc').forEach(card => {
+    card.addEventListener('mouseenter', function(e) {
+      this.style.transform = this.style.transform.includes('translateY') ? this.style.transform : 'translateY(-4px)';
+    });
+    
+    card.addEventListener('mouseleave', function(e) {
+      this.style.transform = '';
+    });
+  });
+  
+  // Add floating animation to hero badge
+  const badge = document.querySelector('.hero-badge');
+  if (badge) {
+    setInterval(() => {
+      badge.style.transform = 'translateY(-2px)';
+      setTimeout(() => {
+        badge.style.transform = 'translateY(0px)';
+      }, 1000);
+    }, 2000);
+  }
+});
+</script>
+</body>
+</html>
